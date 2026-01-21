@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Image Catalog</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <style>
+            body {
+                font-family: system-ui, sans-serif;
+                margin: 24px;
+                background: #0f0f0f;
+                color: #eaeaea;
+            }
+
+            input {
+                width: 100%;
+                max-width: 400px;
+                padding: 10px 12px;
+                font-size: 16px;
+                margin-bottom: 20px;
+                border-radius: 6px;
+                border: none;
+                outline: none;
+            }
+
+            .grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+                gap: 16px;
+            }
+
+            .card {
+                background: #1a1a1a;
+                border-radius: 8px;
+                padding: 8px;
+                text-align: center;
+            }
+
+            img {
+                width: 100%;
+                height: auto;
+                border-radius: 6px;
+            }
+
+            .name {
+                margin-top: 6px;
+                font-size: 14px;
+                opacity: 0.85;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Image Catalog</h1>
+
+        <input
+            id="search"
+            type="text"
+            placeholder="Search by name…"
+            autocomplete="off"
+        />
+
+        <div id="grid" class="grid"></div>
+
+        <script>
+            let items = [];
+
+            async function loadData() {
+                const res = await fetch("data/items.json");
+                items = await res.json();
+                render(items);
+            }
+
+            function render(list) {
+                const grid = document.getElementById("grid");
+                grid.innerHTML = "";
+
+                for (const item of list) {
+                    const card = document.createElement("div");
+                    card.className = "card";
+
+                    card.innerHTML = `
+          <img src="${item.image}" alt="${item.name}" loading="lazy" />
+          <div class="name">${item.name}</div>
+        `;
+
+                    grid.appendChild(card);
+                }
+            }
+
+            document.getElementById("search").addEventListener("input", (e) => {
+                const q = e.target.value.toLowerCase();
+
+                const filtered = items.filter((item) =>
+                    item.name.toLowerCase().includes(q),
+                );
+
+                render(filtered);
+            });
+
+            loadData();
+        </script>
+    </body>
+</html>
