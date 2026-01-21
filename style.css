@@ -1,8 +1,8 @@
 body {
     font-family: system-ui, sans-serif;
     margin: 24px;
-    background: #f0f0f0;
-    color: #252525;
+    background: #f5f5f5;
+    color: #333;
 }
 
 input {
@@ -16,28 +16,92 @@ input {
     outline: none;
 }
 
+/* Grid layout */
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    gap: 16px;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
 }
 
+/* Card */
 .card {
     background: #fff;
-    border-radius: 8px;
-    padding: 8px;
-    text-align: center;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    border-radius: 12px;
+    padding: 12px;
+    text-align: left;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease;
 }
 
-img {
+/* Image */
+.card img {
     width: 100%;
     height: auto;
-    border-radius: 6px;
+    border-radius: 8px;
+    margin-bottom: 12px;
 }
 
-.name {
-    margin-top: 6px;
+/* Name */
+.card .name {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+/* Info section */
+.card .info {
     font-size: 14px;
-    opacity: 0.85;
+    line-height: 1.4;
+    color: #555;
+}
+
+.card .info div {
+    margin-bottom: 4px;
+}
+
+/* Highlight style */
+mark {
+    background-color: #ffe066;
+    color: #222;
+    font-weight: 600;
+    padding: 0 2px;
+    border-radius: 2px;
+}
+.card-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+}
+
+.card-buttons button {
+    flex: 1;
+    margin: 2px;
+    padding: 6px 8px;
+    font-size: 13px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.15s ease;
+}
+
+.card-buttons button.download {
+    background-color: #4caf50;
+    color: white;
+}
+
+.card-buttons button.download:hover {
+    background-color: #45a049;
+}
+
+.card-buttons button.copy {
+    background-color: #2196f3;
+    color: white;
+}
+
+.card-buttons button.copy:hover {
+    background-color: #1976d2;
 }
