@@ -4,20 +4,20 @@
         "name": "Paint Can",
         "category": "paint",
         "tags": ["red", "blue", "green"],
-        "image": "paint can.png"
+        "image": "paint_can.png"
     },
     {
         "id": "auto_crib",
         "name": "Auto Crib",
         "category": "toy",
         "tags": ["wood", "toy"],
-        "image": "auto crib.png"
+        "image": "auto_crib.png"
     },
     {
         "id": "hiking_shoes",
         "name": "Hiking Shoes",
         "category": "shoes",
         "tags": ["leather", "outdoor"],
-        "image": "hiking shoes.png"
+        "image": "hiking_shoes.png"
     }
 ]

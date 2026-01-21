@@ -1,5 +1,5 @@
 // GitHub Pages base URL (your repo URL)
-const directoryUrl = "https://nika-somkhishvili.github.io/project-mpl";
+const directoryUrl = "https://nika-somkhishvili.github.io/project-mpl/images";
 
 // Global items array
 let items = [];
@@ -12,7 +12,7 @@ async function loadData() {
     // Make image URLs absolute
     items = data.map((item) => ({
         ...item,
-        image: `${directoryUrl}/images/${item.image}`,
+        image: `${directoryUrl}/${item.image}`,
     }));
 
     render(items);
@@ -27,6 +27,7 @@ function render(list) {
         const card = document.createElement("div");
         card.className = "card";
 
+        console.log(item.image);
         card.innerHTML = `
       <img src="${item.image}" alt="${item.name}" loading="lazy" />
       <div class="name">${item.name}</div>
