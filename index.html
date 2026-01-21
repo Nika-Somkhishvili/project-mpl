@@ -4,12 +4,13 @@
         <meta charset="UTF-8" />
         <title>Image Catalog</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="style.css" />
 
         <style>
             body {
                 font-family: system-ui, sans-serif;
                 margin: 24px;
-                background: #d6d6d6;
+                background: #f0f0f0;
                 color: #252525;
             }
 
@@ -20,7 +21,7 @@
                 font-size: 16px;
                 margin-bottom: 20px;
                 border-radius: 6px;
-                border: none;
+                border: 1px solid #ccc;
                 outline: none;
             }
 
@@ -31,10 +32,11 @@
             }
 
             .card {
-                background: #1a1a1a;
+                background: #fff;
                 border-radius: 8px;
                 padding: 8px;
                 text-align: center;
+                box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
             }
 
             img {
@@ -62,43 +64,6 @@
 
         <div id="grid" class="grid"></div>
 
-        <script>
-            let items = [];
-
-            async function loadData() {
-                const res = await fetch("data/items.json");
-                items = await res.json();
-                render(items);
-            }
-
-            function render(list) {
-                const grid = document.getElementById("grid");
-                grid.innerHTML = "";
-
-                for (const item of list) {
-                    const card = document.createElement("div");
-                    card.className = "card";
-
-                    card.innerHTML = `
-          <img src="${item.image}" alt="${item.name}" loading="lazy" />
-          <div class="name">${item.name}</div>
-        `;
-
-                    grid.appendChild(card);
-                }
-            }
-
-            document.getElementById("search").addEventListener("input", (e) => {
-                const q = e.target.value.toLowerCase();
-
-                const filtered = items.filter((item) =>
-                    item.name.toLowerCase().includes(q),
-                );
-
-                render(filtered);
-            });
-
-            loadData();
-        </script>
+        <script src="main.js"></script>
     </body>
 </html>
