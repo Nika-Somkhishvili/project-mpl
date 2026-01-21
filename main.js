@@ -35,19 +35,29 @@ function render(list, query = "") {
         const tagsText = item.tags.join(", ");
 
         card.innerHTML = `
-            <img src="${item.image}" alt="${item.name}" loading="lazy" />
-            <div class="name">${highlight(item.name, query)}</div>
-            <div class="info">
-                <div><strong>Category:</strong> ${highlight(item.category, query)}</div>
-                <div><strong>Tags:</strong> ${highlight(tagsText, query)}</div>
-                <div><strong>ID:</strong> ${highlight(item.id, query)}</div>
-            </div>
 
-            <div class="card-buttons">
-                <button class="download">Download</button>
-                <button class="copy">Copy URL</button>
+            <div class="inner-card-wrapper">
+                <div class="card-buttons">
+                 <button class="open"><i class="fa-solid fa-up-right-from-square"></i></button>
+                    <button class="copy"><i class="fa-solid fa-link"></i></button>
+                    <button class="download"><i class="fa-solid fa-download"></i></button>
+                    
+                </div>
+                <img src="${item.image}" alt="${item.name}" loading="lazy" />
+                <div class="name">${highlight(item.name, query)}</div>
+                <div class="info">
+                    <div><strong>Category:</strong> ${highlight(item.category, query)}</div>
+                    <div><strong>Tags:</strong> ${highlight(tagsText, query)}</div>
+                    <div><strong>ID:</strong> ${highlight(item.id, query)}</div>
+                </div>
             </div>
+            
+
+            
         `;
+        card.querySelector(".open").addEventListener("click", () => {
+            window.open(item.image, "_blank");
+        });
 
         // --- Copy URL ---
         card.querySelector(".copy").addEventListener("click", () => {

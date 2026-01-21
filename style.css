@@ -16,11 +16,10 @@ input {
     outline: none;
 }
 
-/* Grid layout */
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
+    gap: 10px;
 }
 
 /* Card */
@@ -29,30 +28,25 @@ input {
     border-radius: 12px;
     padding: 12px;
     text-align: left;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.098);
     display: flex;
     flex-direction: column;
-    transition:
-        transform 0.15s ease,
-        box-shadow 0.15s ease;
+    position: relative;
+    box-sizing: border-box;
 }
 
-/* Image */
 .card img {
     width: 100%;
     height: auto;
     border-radius: 8px;
-    margin-bottom: 12px;
+    border: 1px solid #ddd;
 }
 
-/* Name */
 .card .name {
     font-size: 18px;
     font-weight: 600;
-    margin-bottom: 8px;
 }
 
-/* Info section */
 .card .info {
     font-size: 14px;
     line-height: 1.4;
@@ -60,10 +54,8 @@ input {
 }
 
 .card .info div {
-    margin-bottom: 4px;
 }
 
-/* Highlight style */
 mark {
     background-color: #ffe066;
     color: #222;
@@ -71,37 +63,29 @@ mark {
     padding: 0 2px;
     border-radius: 2px;
 }
+
+.inner-card-wrapper {
+    position: relative;
+    background-color: transparent;
+}
 .card-buttons {
     display: flex;
-    justify-content: space-between;
-    margin-top: 8px;
+    justify-content: end;
+    /* border: #1976d2 1px solid; */
+    position: absolute;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .card-buttons button {
-    flex: 1;
-    margin: 2px;
-    padding: 6px 8px;
-    font-size: 13px;
+    font-size: 1em;
+    padding: 8px;
     border: none;
-    border-radius: 6px;
     cursor: pointer;
     transition: 0.15s ease;
+    background-color: transparent;
+    color: #006a9b;
 }
-
-.card-buttons button.download {
-    background-color: #4caf50;
-    color: white;
-}
-
-.card-buttons button.download:hover {
-    background-color: #45a049;
-}
-
-.card-buttons button.copy {
-    background-color: #2196f3;
-    color: white;
-}
-
-.card-buttons button.copy:hover {
-    background-color: #1976d2;
+.card-buttons button:active {
+    color: #17c400;
 }
